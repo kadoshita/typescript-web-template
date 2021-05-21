@@ -1,2 +1,3 @@
 # typescript-web-template
-TypeScript用のWebアプリテンプレート
+
+TypeScript 用の Web アプリテンプレート
