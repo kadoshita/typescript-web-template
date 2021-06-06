@@ -1,7 +1,11 @@
+const webpack = require('webpack');
 const path = require('path');
+require('dotenv').config();
 
 module.exports = {
     entry: './src/main.ts',
+    context: __dirname,
+    devtool: false,
     module: {
         rules: [
             {
@@ -18,9 +22,16 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        }),
+    ],
     devServer: {
         contentBase: __dirname,
-        compress: true,
-        port: process.env.PORT || 9000
-    }
+        port: process.env.PORT || 9000,
+        host: '0.0.0.0',
+        publicPath: '/dist/',
+        writeToDisk: true,
+    },
 };
