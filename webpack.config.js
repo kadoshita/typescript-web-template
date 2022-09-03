@@ -28,10 +28,14 @@ module.exports = {
         }),
     ],
     devServer: {
-        contentBase: __dirname,
         port: process.env.PORT || 9000,
         host: '0.0.0.0',
-        publicPath: '/dist/',
-        writeToDisk: true,
+        static: {
+            directory: __dirname
+        },
+        devMiddleware: {
+            publicPath: '/dist/',
+            writeToDisk: true,
+        }
     },
 };
