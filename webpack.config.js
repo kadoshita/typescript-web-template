@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 require('dotenv').config();
 
+/** @type {import('webpack-cli').WebpackConfiguration} */
 module.exports = {
     entry: './src/main.ts',
     context: __dirname,
@@ -31,11 +32,11 @@ module.exports = {
         port: process.env.PORT || 9000,
         host: '0.0.0.0',
         static: {
-            directory: __dirname
+            directory: __dirname,
         },
         devMiddleware: {
             publicPath: '/dist/',
             writeToDisk: true,
-        }
+        },
     },
 };
